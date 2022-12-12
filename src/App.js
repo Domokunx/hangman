@@ -4,6 +4,8 @@ import HangmanWord from "./components/hangmanWord";
 import Keyboard from "./components/keyboard";
 import list from "./components/list.js"   
 
+let correctLettersGuessedSet = new Set();
+
 class App extends Component {
   state = {
     wrongGuesses: 0,
@@ -28,7 +30,9 @@ class App extends Component {
 
   handleWrongGuess() {
     let {wrongGuesses: count} = this.state;
-    count++;
+    if (count < 6) {
+      count++;
+    }
     this.setState({wrongGuesses: count});
 
     let currentWord = this.state.word.split('');
@@ -37,7 +41,8 @@ class App extends Component {
   }
 
   handleCorrectGuess(key) {
-    this.setState({correctLettersGuessed: [...this.state.correctLettersGuessed, key]})
+    correctLettersGuessedSet.add(key)
+    this.setState({correctLettersGuessed: [...correctLettersGuessedSet]})
 
     let currentWord = this.state.word.split('');
     currentWord = currentWord.map(letter => (this.state.correctLettersGuessed.includes(letter) ? letter : '_'))
@@ -74,7 +79,7 @@ class App extends Component {
 
     <div style={{ fontSize: '2rem', textAlign:'center'}}>{this.handleResult()}{(((this.handleResult() === 'You Win!') || this.handleResult() === 'You Lose!') ? <button style={{margin:'5px'}} onClick={this.refreshPage}>New Game</button> : '')}</div>
     <HangmanDrawing wrongGuesses={this.state.wrongGuesses}/>
-    <HangmanWord correctLettersGuessed={this.state.correctLettersGuessed} word={this.state.word}/>
+    <HangmanWord correctLettersGuessed={this.state.correctLettersGuessed} word={this.state.word} wrongGuesses={this.state.wrongGuesses}/>
     <Keyboard word={this.state.word} onKeyPress={this.handleKeyPress}/>
 </div>
     );
