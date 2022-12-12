@@ -30,3 +30,7 @@ code {
 .key:active{
   background:rgb(76, 73, 73);
 }
+
+.clicked{
+  opacity: 0.5;
+}

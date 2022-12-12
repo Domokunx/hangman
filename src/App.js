@@ -19,6 +19,10 @@ class App extends Component {
     this.setState({lettersGuessed: [...this.state.lettersGuessed, key]})
     this.setState({lettersToGuess: [...new Set(this.state.word)]})
 
+    document.addEventListener('click', function handleClick(event) {
+      event.target.classList.add('clicked');
+    });    
+
     if (this.state.word.includes(key)){
       return this.handleCorrectGuess(key);
     }

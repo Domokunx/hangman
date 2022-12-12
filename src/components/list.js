@@ -1,3 +1,3 @@
-let list = ['test','first','second','hippopotomonstrosesquippedaliophobia','supercalifragilisticexpialidocious','botox','clint']
+let list = ['test','first','second','botox','clint']
 
 export default list
