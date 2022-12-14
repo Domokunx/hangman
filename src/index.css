@@ -34,3 +34,20 @@ code {
 .clicked{
   opacity: 0.5;
 }
+
+.button{
+  background:#333; 
+  border: transparent;
+  color: white;
+  font-size: 32px;
+}
+
+.button:active{
+  opacity: 0.5;
+}
+
+.window-wrapper{
+  height: 700px;
+  width: 100%;
+  left: 0px;
+}

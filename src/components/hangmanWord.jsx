@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 
 class HangmanWord extends Component {
-    state = {
-        word: this.props.word,
-    }
-
     updateWord() {
         if (this.props.wrongGuesses === 6){
-            return this.state.word;
+            return this.props.word;
         }
 
         let id = 0;
-        let currentWord = this.state.word.split('');
+        let currentWord = this.props.word.split('');
         currentWord = currentWord.map(letter => <div key={id++}>{this.getLetter(letter)}</div>)
         return currentWord;
     }
